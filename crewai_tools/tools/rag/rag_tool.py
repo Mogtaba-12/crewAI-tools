@@ -39,11 +39,11 @@ class RagTool(BaseTool):
     @model_validator(mode="after")
     def _set_default_adapter(self):
         if isinstance(self.adapter, RagTool._AdapterPlaceholder):
-            from embedchain import App
+            from crewai_tools.tools.rag.aixplain_embedchain_llm import AixplainEmbedChainApp
 
             from crewai_tools.adapters.embedchain_adapter import EmbedchainAdapter
 
-            app = App.from_config(config=self.config) if self.config else App()
+            app = AixplainEmbedChainApp.from_config(config=self.config) if self.config else AixplainEmbedChainApp()
             self.adapter = EmbedchainAdapter(
                 embedchain_app=app, summarize=self.summarize
             )

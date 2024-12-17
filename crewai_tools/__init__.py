@@ -42,5 +42,5 @@ from .tools import (
     XMLSearchTool,
     YoutubeChannelSearchTool,
     YoutubeVideoSearchTool,
-    WeaviateVectorSearchTool,
+   
 )

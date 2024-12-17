@@ -36,21 +36,21 @@ class PDFSearchTool(RagTool):
             self.args_schema = FixedPDFSearchToolSchema
             self._generate_description()
 
-    @model_validator(mode="after")
-    def _set_default_adapter(self):
-        if isinstance(self.adapter, RagTool._AdapterPlaceholder):
-            from embedchain import App
+    # @model_validator(mode="after")
+    # def _set_default_adapter(self):
+    #     if isinstance(self.adapter, RagTool._AdapterPlaceholder):
+    #         from embedchain import App
 
-            from crewai_tools.adapters.pdf_embedchain_adapter import (
-                PDFEmbedchainAdapter,
-            )
+    #         from crewai_tools.adapters.pdf_embedchain_adapter import (
+    #             PDFEmbedchainAdapter,
+    #         )
 
-            app = App.from_config(config=self.config) if self.config else App()
-            self.adapter = PDFEmbedchainAdapter(
-                embedchain_app=app, summarize=self.summarize
-            )
+    #         app = App.from_config(config=self.config) if self.config else App()
+    #         self.adapter = PDFEmbedchainAdapter(
+    #             embedchain_app=app, summarize=self.summarize
+    #         )
 
-        return self
+    #     return self
 
     def add(
         self,
